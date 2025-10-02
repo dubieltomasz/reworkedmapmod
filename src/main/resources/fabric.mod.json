@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "reworked-map-mod",
+	"version": "${version}",
+	"name": "Reworked Map Mod",
+	"description": "Mod that reworks how maps work",
+	"authors": [
+		"Tomasz Dubiel!",
+		"Hubert Drążek!"
+	],
+	"contact": {
+		"homepage": "https://...",
+		"sources": "https://github.com/..."
+	},
+	"license": "MIT",
+	"icon": "assets/reworked-map-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.tobert.reworkedmapmod.ReworkedMapMod"
+		],
+		"fabric-datagen": [
+			"io.tobert.reworkedmapmod.ReworkedMapModDataGenerator"
+		],
+		"client": [
+			"io.tobert.reworkedmapmod.ReworkedMapModClient"
+		]
+	},
+	"mixins": [
+		"reworked-map-mod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.9",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
