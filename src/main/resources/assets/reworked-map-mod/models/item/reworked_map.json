@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "reworkedmapmod:item/reworked_map"
+    "layer0": "reworked-map-mod:item/reworked_map"
   }
 }
