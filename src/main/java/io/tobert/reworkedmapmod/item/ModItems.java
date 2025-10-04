@@ -11,7 +11,11 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    public static final Item REWORKED_MAP = registerItem("reworked_map", new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ReworkedMapMod.MOD_ID,"reworked_map")))));
+    public static final Item REWORKED_MAP = registerItem("reworked_map", new Item(
+            new Item.Settings().registryKey(RegistryKey.of(
+                    RegistryKeys.ITEM, Identifier.of(ReworkedMapMod.MOD_ID,"reworked_map")
+            ))
+    ));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(ReworkedMapMod.MOD_ID, name), item);
