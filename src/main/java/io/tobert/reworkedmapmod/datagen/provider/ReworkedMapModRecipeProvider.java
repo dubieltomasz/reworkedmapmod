@@ -43,7 +43,15 @@ public class ReworkedMapModRecipeProvider extends FabricRecipeProvider {
                         .pattern("III")
                         .input('I', Items.INK_SAC)
                         .input('X', Items.MAP)
-                        .criterion(hasItem(ModItems.EVIL_DIAMOND_AXE), conditionsFromItem(ModItems.EVIL_DIAMOND_AXE))
+                        .criterion(hasItem(ModItems.REWORKED_MAP), conditionsFromItem(ModItems.REWORKED_MAP))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.BUILDING_BLOCKS, ModItems.EVIL_DIAMOND_BLOCK, 1)
+                        .pattern("XXX")
+                        .pattern("XXX")
+                        .pattern("XXX")
+                        .input('X', ModItems.EVIL_DIAMOND)
+                        .criterion(hasItem(ModItems.EVIL_DIAMOND_BLOCK), conditionsFromItem(ModItems.EVIL_DIAMOND_BLOCK))
                         .offerTo(exporter);
             }
         };
