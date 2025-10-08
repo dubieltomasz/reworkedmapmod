@@ -1,6 +1,7 @@
 package io.tobert.reworkedmapmod.recipe;
 
 import io.tobert.reworkedmapmod.item.ModItems;
+import io.tobert.reworkedmapmod.registry.ModItemTags;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeSerializer;
@@ -19,7 +20,7 @@ public class CraftingEvilAxeRecipe extends SpecialCraftingRecipe {
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
         if(input.getWidth() == 1 && input.getHeight() == 3 && input.getStackCount() == 3){
-            return input.getStackInSlot(0,0).isOf(ModItems.EVIL_DIAMOND) && input.getStackInSlot(0,1).isOf(ModItems.EVIL_STICK) && input.getStackInSlot(0,2).isOf(ModItems.EVIL_STICK);
+            return input.getStackInSlot(0,0).isIn(ModItemTags.EVIL_DIAMOND_TOOL_MATERIALS) && input.getStackInSlot(0,1).isOf(ModItems.EVIL_STICK) && input.getStackInSlot(0,2).isOf(ModItems.EVIL_STICK);
         }
         return false;
     }
