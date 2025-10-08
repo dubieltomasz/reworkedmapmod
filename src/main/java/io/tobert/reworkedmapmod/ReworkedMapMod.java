@@ -1,5 +1,6 @@
 package io.tobert.reworkedmapmod;
 
+import io.tobert.reworkedmapmod.block.ModBlocks;
 import io.tobert.reworkedmapmod.component.ModDataComponentTypes;
 import io.tobert.reworkedmapmod.item.ModItems;
 import io.tobert.reworkedmapmod.recipe.ModRecipes;
@@ -16,6 +17,7 @@ public class ReworkedMapMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.initialize();
+		ModBlocks.initialize();
 		ModRecipes.initialize();
 		ModDataComponentTypes.initialize();
 	}

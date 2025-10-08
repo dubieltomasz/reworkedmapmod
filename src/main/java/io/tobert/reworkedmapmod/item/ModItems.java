@@ -1,7 +1,10 @@
 package io.tobert.reworkedmapmod.item;
 
+import io.tobert.reworkedmapmod.block.ModBlocks;
 import io.tobert.reworkedmapmod.item.equipment.ModArmorMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -10,9 +13,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-import static io.tobert.reworkedmapmod.ReworkedMapMod.MOD_ID;
+import static io.tobert.reworkedmapmod.ReworkedMapMod.*;
 
 public class ModItems {
 
@@ -26,6 +31,7 @@ public class ModItems {
     public static final Item EVIL_DIAMOND_LEGGINGS = register("evil_diamond_leggings", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.LEGGINGS));
     public static final Item EVIL_DIAMOND_BOOTS = register("evil_diamond_boots", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.BOOTS));
 
+    public static final Item EVIL_DIAMOND_BLOCK = register(ModBlocks.EVIL_DIAMOND_BLOCK);
 
     public static void initialize(){
         Registry.register(Registries.ITEM_GROUP, ModItemGroups.CUSTOM_ITEM_GROUP_KEY, ModItemGroups.CUSTOM_ITEM_GROUP);
@@ -39,6 +45,7 @@ public class ModItems {
             itemGroup.add(ModItems.EVIL_DIAMOND_BOOTS);
             itemGroup.add(ModItems.EVIL_STICK);
             itemGroup.add(ModItems.REWORKED_MAP);
+            itemGroup.add(ModItems.EVIL_DIAMOND_BLOCK);
         });
     }
 
@@ -48,5 +55,11 @@ public class ModItems {
         Registry.register(Registries.ITEM, itemKey, item);
 
         return item;
+    }
+
+    public static Item register(Block block) {
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, block.getRegistryEntry().registryKey().getValue());
+        BlockItem blockItem = new BlockItem(block, new Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey());
+        return Registry.register(Registries.ITEM, itemKey, blockItem);
     }
 }

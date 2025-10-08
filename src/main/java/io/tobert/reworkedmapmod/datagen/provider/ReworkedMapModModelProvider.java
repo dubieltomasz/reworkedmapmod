@@ -1,5 +1,6 @@
 package io.tobert.reworkedmapmod.datagen.provider;
 
+import io.tobert.reworkedmapmod.block.ModBlocks;
 import io.tobert.reworkedmapmod.item.ModItems;
 import io.tobert.reworkedmapmod.item.equipment.ModEquipmentAssetKeys;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -15,7 +16,7 @@ public class ReworkedMapModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.EVIL_DIAMOND_BLOCK);
     }
 
     @Override
