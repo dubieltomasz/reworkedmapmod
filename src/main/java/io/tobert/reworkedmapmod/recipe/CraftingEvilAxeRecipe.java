@@ -2,8 +2,13 @@ package io.tobert.reworkedmapmod.recipe;
 
 import io.tobert.reworkedmapmod.item.ModItems;
 import io.tobert.reworkedmapmod.registry.ModItemTags;
+import net.minecraft.command.argument.ArgumentTypes;
+import net.minecraft.command.argument.NbtCompoundArgumentType;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtInt;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
@@ -28,7 +33,8 @@ public class CraftingEvilAxeRecipe extends SpecialCraftingRecipe {
     @Override
     public ItemStack craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup registries) {
         ItemStack is = ModItems.EVIL_DIAMOND_AXE.getDefaultStack();
-        is.set(DataComponentTypes.CUSTOM_NAME, Text.literal("sperma"));
+        //is.set(DataComponentTypes.CUSTOM_NAME, Text.literal("sperma"));
+        is.set(DataComponentTypes.CUSTOM_NAME, Text.of("pep"));
         return is;
     }
 
