@@ -1,35 +1,50 @@
 package io.tobert.reworkedmapmod.item;
 
-import io.tobert.reworkedmapmod.ReworkedMapMod;
+import io.tobert.reworkedmapmod.item.equipment.ModArmorMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+
 import java.util.function.Function;
 
-public class ModItems {
-    public static final Item REWORKED_MAP = registerHelper("reworked_map", Item::new, new Item.Settings());
+import static io.tobert.reworkedmapmod.ReworkedMapMod.MOD_ID;
 
-    public static Item registerHelper(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
-        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ReworkedMapMod.MOD_ID, name));
-        Item item = itemFactory.apply(settings.registryKey(itemKey));
+public class ModItems {
+
+    public static final Item EVIL_DIAMOND = register("evil_diamond", Item::new,new Item.Settings());
+    public static final Item EVIL_STICK = register("evil_stick", Item::new, new Item.Settings());
+    public static final Item EVIL_DIAMOND_AXE = register("evil_diamond_axe", Item::new, new Item.Settings().axe(ModToolMaterials.EVIL_DIAMOND, 1f, 1f));
+
+    public static final Item EVIL_DIAMOND_HELMET = register("evil_diamond_helmet", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.HELMET));
+    public static final Item EVIL_DIAMOND_CHESTPLATE = register("evil_diamond_chestplate", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.CHESTPLATE));
+    public static final Item EVIL_DIAMOND_LEGGINGS = register("evil_diamond_leggings", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.LEGGINGS));
+    public static final Item EVIL_DIAMOND_BOOTS = register("evil_diamond_boots", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.BOOTS));
+
+
+    public static void initialize(){
+        Registry.register(Registries.ITEM_GROUP, ModItemGroups.CUSTOM_ITEM_GROUP_KEY, ModItemGroups.CUSTOM_ITEM_GROUP);
+
+        ItemGroupEvents.modifyEntriesEvent(ModItemGroups.CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
+            itemGroup.add(ModItems.EVIL_DIAMOND);
+            itemGroup.add(ModItems.EVIL_DIAMOND_AXE);
+            itemGroup.add(ModItems.EVIL_DIAMOND_HELMET);
+            itemGroup.add(ModItems.EVIL_DIAMOND_CHESTPLATE);
+            itemGroup.add(ModItems.EVIL_DIAMOND_LEGGINGS);
+            itemGroup.add(ModItems.EVIL_DIAMOND_BOOTS);
+            itemGroup.add(ModItems.EVIL_STICK);
+        });
+    }
+
+    public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings){
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, name));
+        Item item = itemFactory.apply(settings.registryKey(itemKey)); // settings.registryKey(itemKey) <-- this function assigns settings to an item?
         Registry.register(Registries.ITEM, itemKey, item);
 
         return item;
-    }
-
-    public static void registerModItems() {
-        ReworkedMapMod.LOGGER.info("Register mod items for " + ReworkedMapMod.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ModItemGroup.CUSTOM_ITEM_GROUP_KEY).register(entries -> {
-            entries.add(REWORKED_MAP);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.add(REWORKED_MAP);
-        });
     }
 }

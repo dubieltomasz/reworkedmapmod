@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "reworked_map_mod:evil_diamond"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "reworked_map_mod:evil_diamond"
+      }
+    ]
+  }
+}
