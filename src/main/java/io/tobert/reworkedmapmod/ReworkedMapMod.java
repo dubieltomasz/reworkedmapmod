@@ -2,6 +2,7 @@ package io.tobert.reworkedmapmod;
 
 import io.tobert.reworkedmapmod.item.ModItemGroup;
 import io.tobert.reworkedmapmod.item.ModItems;
+import io.tobert.reworkedmapmod.recipe.ModdedCraftingSerializer;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -15,5 +16,6 @@ public class ReworkedMapMod implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroup.registerItemGroup();
 		ModItems.registerModItems();
+		ModdedCraftingSerializer.initialize();
 	}
 }
