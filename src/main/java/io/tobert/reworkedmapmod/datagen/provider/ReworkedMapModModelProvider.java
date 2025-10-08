@@ -23,6 +23,7 @@ public class ReworkedMapModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.EVIL_DIAMOND, Models.HANDHELD);
         itemModelGenerator.register(ModItems.EVIL_DIAMOND_AXE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.EVIL_STICK, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.REWORKED_MAP, Models.HANDHELD);
 
         itemModelGenerator.registerArmor(ModItems.EVIL_DIAMOND_HELMET, ModEquipmentAssetKeys.EVIL_DIAMOND, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
         itemModelGenerator.registerArmor(ModItems.EVIL_DIAMOND_CHESTPLATE, ModEquipmentAssetKeys.EVIL_DIAMOND, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);

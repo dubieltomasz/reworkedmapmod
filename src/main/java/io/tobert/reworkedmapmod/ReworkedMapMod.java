@@ -1,5 +1,6 @@
 package io.tobert.reworkedmapmod;
 
+import io.tobert.reworkedmapmod.component.ModDataComponentTypes;
 import io.tobert.reworkedmapmod.item.ModItems;
 import io.tobert.reworkedmapmod.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +17,7 @@ public class ReworkedMapMod implements ModInitializer {
 	public void onInitialize() {
 		ModItems.initialize();
 		ModRecipes.initialize();
+		ModDataComponentTypes.initialize();
 	}
 
 	public static Identifier ofModIdentifier(String name){

@@ -12,6 +12,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,6 +34,15 @@ public class ReworkedMapModRecipeProvider extends FabricRecipeProvider {
                         .pattern(" S")
                         .input('D', ModItemTags.EVIL_DIAMOND_TOOL_MATERIALS)
                         .input('S', ModItems.EVIL_STICK)
+                        .criterion(hasItem(ModItems.EVIL_DIAMOND_AXE), conditionsFromItem(ModItems.EVIL_DIAMOND_AXE))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.MISC, ModItems.REWORKED_MAP, 1)
+                        .pattern("III")
+                        .pattern("IXI")
+                        .pattern("III")
+                        .input('I', Items.INK_SAC)
+                        .input('X', Items.MAP)
                         .criterion(hasItem(ModItems.EVIL_DIAMOND_AXE), conditionsFromItem(ModItems.EVIL_DIAMOND_AXE))
                         .offerTo(exporter);
             }

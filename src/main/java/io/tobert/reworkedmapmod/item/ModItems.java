@@ -19,6 +19,7 @@ public class ModItems {
     public static final Item EVIL_DIAMOND = register("evil_diamond", Item::new,new Item.Settings());
     public static final Item EVIL_STICK = register("evil_stick", Item::new, new Item.Settings());
     public static final Item EVIL_DIAMOND_AXE = register("evil_diamond_axe", Item::new, new Item.Settings().axe(ModToolMaterials.EVIL_DIAMOND, 1f, 1f));
+    public static final Item REWORKED_MAP = register("reworked_map", ReworkedMap::new, new Item.Settings());
 
     public static final Item EVIL_DIAMOND_HELMET = register("evil_diamond_helmet", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.HELMET));
     public static final Item EVIL_DIAMOND_CHESTPLATE = register("evil_diamond_chestplate", Item::new, new Item.Settings().armor(ModArmorMaterials.EVIL_DIAMOND, EquipmentType.CHESTPLATE));
@@ -37,6 +38,7 @@ public class ModItems {
             itemGroup.add(ModItems.EVIL_DIAMOND_LEGGINGS);
             itemGroup.add(ModItems.EVIL_DIAMOND_BOOTS);
             itemGroup.add(ModItems.EVIL_STICK);
+            itemGroup.add(ModItems.REWORKED_MAP);
         });
     }
 

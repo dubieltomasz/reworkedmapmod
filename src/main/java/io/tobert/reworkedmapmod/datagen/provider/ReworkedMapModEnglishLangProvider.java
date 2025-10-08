@@ -23,6 +23,7 @@ public class ReworkedMapModEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.EVIL_DIAMOND_LEGGINGS.getTranslationKey(), "Evil Diamond Leggings");
         translationBuilder.add(ModItems.EVIL_DIAMOND_BOOTS.getTranslationKey(), "Evil Diamond Boots");
         translationBuilder.add(ModItems.EVIL_STICK.getTranslationKey(), "Evil Diamond");
+        translationBuilder.add(ModItems.REWORKED_MAP.getTranslationKey(), "Reworked Map");
 
         translationBuilder.add(ModItemGroups.CUSTOM_ITEM_GROUP.getDisplayName().getString(), "Evil Group");
     }
