@@ -10,7 +10,6 @@ import static io.tobert.reworkedmapmod.ReworkedMapMod.ofModIdentifier;
 
 public class ModRecipes {
 
-    public static final RecipeSerializer<CraftingEvilAxeRecipe> CRAFTING_EVIL_AXE = register("crafting_evil_axe", new SpecialCraftingRecipe.SpecialRecipeSerializer<>(CraftingEvilAxeRecipe::new));
     public static final RecipeSerializer<CraftingReworkedMapRecipe> CRAFTING_REWORKED_MAP = register("crafting_reworked_map", new SpecialCraftingRecipe.SpecialRecipeSerializer<>(CraftingReworkedMapRecipe::new));
 
     static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String name, S serializer) {
