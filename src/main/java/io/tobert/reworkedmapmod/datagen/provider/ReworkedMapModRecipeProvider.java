@@ -16,6 +16,9 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * This class provides recipes for generating json files. Add any recipes here.
+ */
 public class ReworkedMapModRecipeProvider extends FabricRecipeProvider {
     public ReworkedMapModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);

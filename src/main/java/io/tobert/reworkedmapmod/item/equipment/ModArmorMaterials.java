@@ -8,8 +8,11 @@ import net.minecraft.sound.SoundEvents;
 
 import java.util.Map;
 
+/**
+ * Class for storing custom armor materials
+ */
 public class ModArmorMaterials {
-
+    /** An armor material that is used for registering and Evil Diamond armor **/
     public static final ArmorMaterial EVIL_DIAMOND = new ArmorMaterial(
             15, // Base durability
             Map.of(

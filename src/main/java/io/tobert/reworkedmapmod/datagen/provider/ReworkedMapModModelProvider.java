@@ -9,6 +9,9 @@ import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
 
+/**
+ * This class provides models for generating .json files. Add generic/ simple models here.
+ */
 public class ReworkedMapModModelProvider extends FabricModelProvider {
     public ReworkedMapModModelProvider(FabricDataOutput output) {
         super(output);

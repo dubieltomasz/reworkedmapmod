@@ -8,8 +8,12 @@ import net.minecraft.registry.Registry;
 
 import static io.tobert.reworkedmapmod.ReworkedMapMod.ofModIdentifier;
 
+/**
+ * Class for registering custom special recipes
+ */
 public class ModRecipes {
 
+    /** An instance of a serializer for a CraftingReworkedMapRecipe special crafting recipe **/
     public static final RecipeSerializer<CraftingReworkedMapRecipe> CRAFTING_REWORKED_MAP = register("crafting_reworked_map", new SpecialCraftingRecipe.SpecialRecipeSerializer<>(CraftingReworkedMapRecipe::new));
 
     static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String name, S serializer) {
@@ -17,6 +21,5 @@ public class ModRecipes {
     }
 
     public static void initialize(){
-
     }
 }

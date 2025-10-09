@@ -18,15 +18,16 @@ public class ReworkedMap extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        if(stack.get(ModDataComponentTypes.HAS_RED_PIN)==null){
-            super.appendTooltip(stack,context,displayComponent,textConsumer,type);
+        if (stack.get(ModDataComponentTypes.HAS_RED_PIN) == null) {
+            super.appendTooltip(stack, context, displayComponent, textConsumer, type);
             return;
         }
 
-        if(stack.get(ModDataComponentTypes.HAS_RED_PIN)){
+        // Change tooltip if the red pin nbt tag is true
+        if (stack.get(ModDataComponentTypes.HAS_RED_PIN)) {
             textConsumer.accept(Text.translatable("Red Pin").formatted(Formatting.RED));
-            super.appendTooltip(stack,context,displayComponent,textConsumer,type);
-            
+            super.appendTooltip(stack, context, displayComponent, textConsumer, type);
+
         }
     }
 }

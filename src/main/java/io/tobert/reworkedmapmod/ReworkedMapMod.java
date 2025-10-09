@@ -10,19 +10,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ReworkedMapMod implements ModInitializer {
-	public static final String MOD_ID = "reworked_map_mod";
+    public static final String MOD_ID = "reworked_map_mod";
 
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	@Override
-	public void onInitialize() {
-		ModItems.initialize();
-		ModBlocks.initialize();
-		ModRecipes.initialize();
-		ModDataComponentTypes.initialize();
-	}
+    @Override
+    public void onInitialize() {
+        ModItems.initialize();
+        ModBlocks.initialize();
+        ModRecipes.initialize();
+        ModDataComponentTypes.initialize();
+    }
 
-	public static Identifier ofModIdentifier(String name){
-		return Identifier.of(MOD_ID, name);
-	}
+    /**
+     * This function will change a given String into an identifier in the namespace of this mod.
+     *
+     * @param name String to convert
+     * @return net.minecraft.util.Identifier
+     */
+    public static Identifier ofModIdentifier(String name) {
+        return Identifier.of(MOD_ID, name);
+    }
 }

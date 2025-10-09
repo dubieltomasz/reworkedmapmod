@@ -9,6 +9,9 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * This class provides data for generating item tags. Item tags assign items to their respective groups and give them unique properties. Assign any item tags here.
+ */
 public class ReworkedMapModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     public ReworkedMapModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);

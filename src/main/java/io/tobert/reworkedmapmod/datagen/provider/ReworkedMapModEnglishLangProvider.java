@@ -8,6 +8,9 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * This class provides translations for generating en-us.json. Add any translations here.
+ */
 public class ReworkedMapModEnglishLangProvider extends FabricLanguageProvider {
 
     public ReworkedMapModEnglishLangProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
