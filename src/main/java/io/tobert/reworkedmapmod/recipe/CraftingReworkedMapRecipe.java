@@ -1,9 +1,9 @@
 package io.tobert.reworkedmapmod.recipe;
 
+import io.tobert.reworkedmapmod.component.ModDataComponentTypes;
 import io.tobert.reworkedmapmod.item.ModItems;
-import net.minecraft.block.entity.Sherds;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
@@ -17,28 +17,22 @@ public class CraftingReworkedMapRecipe extends SpecialCraftingRecipe {
     }
 
     @Override
-    public RecipeSerializer<CraftingReworkedMapRecipe> getSerializer() {
-        return ModdedCraftingSerializer.CRAFTING_REWORKED_MAP;
-    }
-
-    @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        return input.getStackCount() == 2
-                && (input.getStackInSlot(0, 0).isOf(ModItems.REWORKED_MAP)
-                || input.getStackInSlot(1, 0).isOf(ModItems.REWORKED_MAP));
+        if(input.getWidth()==2 && input.getHeight() == 1 && input.getStackCount()==2){
+            return input.getStackInSlot(0,0).isOf(Items.RED_DYE) && input.getStackInSlot(1,0).isOf(ModItems.REWORKED_MAP);
+        }
+        return false;
     }
 
     @Override
     public ItemStack craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup registries) {
-        Sherds sherds = new Sherds(
-                input.getStackInSlot(0, 0).getItem(),
-                input.getStackInSlot(1, 0).getItem(),
-                input.getStackInSlot(0, 0).getItem(),
-                input.getStackInSlot(1, 0).getItem()
-        );
         ItemStack stack = ModItems.REWORKED_MAP.getDefaultStack();
-        stack.set(DataComponentTypes.POT_DECORATIONS, sherds);
-
+        stack.set(ModDataComponentTypes.HAS_RED_PIN, true);
         return stack;
+    }
+
+    @Override
+    public RecipeSerializer<? extends SpecialCraftingRecipe> getSerializer() {
+        return ModRecipes.CRAFTING_REWORKED_MAP;
     }
 }

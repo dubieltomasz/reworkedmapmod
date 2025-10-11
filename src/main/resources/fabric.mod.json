@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "reworked-map-mod",
+	"id": "reworked_map_mod",
 	"version": "${version}",
 	"name": "Reworked Map Mod",
 	"description": "Mod that reworks how maps work",
@@ -13,14 +13,14 @@
 		"sources": "https://github.com/dubieltomasz/reworkedmapmod"
 	},
 	"license": "MIT",
-	"icon": "assets/reworked-map-mod/icon.png",
+	"icon": "assets/reworked_map_mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"io.tobert.reworkedmapmod.ReworkedMapMod"
 		],
 		"fabric-datagen": [
-			"io.tobert.reworkedmapmod.ReworkedMapModDataGenerator"
+			"io.tobert.reworkedmapmod.datagen.ReworkedMapModDataGenerator"
 		],
 		"client": [
 			"io.tobert.reworkedmapmod.ReworkedMapModClient"

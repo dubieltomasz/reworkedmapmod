@@ -1,0 +1,67 @@
+package io.tobert.reworkedmapmod.datagen.provider;
+
+import io.tobert.reworkedmapmod.item.ModItems;
+import io.tobert.reworkedmapmod.registry.ModItemTags;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
+
+import java.util.concurrent.CompletableFuture;
+
+/**
+ * This class provides recipes for generating json files. Add any recipes here.
+ */
+public class ReworkedMapModRecipeProvider extends FabricRecipeProvider {
+    public ReworkedMapModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
+    }
+
+    @Override
+    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
+        return new RecipeGenerator(wrapperLookup, recipeExporter) {
+            @Override
+            public void generate() {
+                RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
+
+                createShaped(RecipeCategory.TOOLS, ModItems.EVIL_DIAMOND_AXE, 1)
+                        .pattern("DD")
+                        .pattern("DS")
+                        .pattern(" S")
+                        .input('D', ModItemTags.EVIL_DIAMOND_TOOL_MATERIALS)
+                        .input('S', ModItems.EVIL_STICK)
+                        .criterion(hasItem(ModItems.EVIL_DIAMOND_AXE), conditionsFromItem(ModItems.EVIL_DIAMOND_AXE))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.MISC, ModItems.REWORKED_MAP, 1)
+                        .pattern("III")
+                        .pattern("IXI")
+                        .pattern("III")
+                        .input('I', Items.INK_SAC)
+                        .input('X', Items.MAP)
+                        .criterion(hasItem(ModItems.REWORKED_MAP), conditionsFromItem(ModItems.REWORKED_MAP))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.BUILDING_BLOCKS, ModItems.EVIL_DIAMOND_BLOCK, 1)
+                        .pattern("XXX")
+                        .pattern("XXX")
+                        .pattern("XXX")
+                        .input('X', ModItems.EVIL_DIAMOND)
+                        .criterion(hasItem(ModItems.EVIL_DIAMOND_BLOCK), conditionsFromItem(ModItems.EVIL_DIAMOND_BLOCK))
+                        .offerTo(exporter);
+            }
+        };
+    }
+
+    @Override
+    public String getName() {
+        return "ReworkedMapModRecipeProvider";
+    }
+}
