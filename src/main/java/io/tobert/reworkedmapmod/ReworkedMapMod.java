@@ -5,6 +5,7 @@ import io.tobert.reworkedmapmod.component.ModDataComponentTypes;
 import io.tobert.reworkedmapmod.item.ModItems;
 import io.tobert.reworkedmapmod.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
