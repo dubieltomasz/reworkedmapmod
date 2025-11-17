@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.gl.RenderPipelines;
 
 @Mixin(InventoryScreen.class)
-public abstract class ExampleMixin extends HandledScreen {
-	public ExampleMixin(ScreenHandler handler, PlayerInventory inventory, Text title) {
+public abstract class InventoryScreenGUIMixin extends HandledScreen {
+	public InventoryScreenGUIMixin(ScreenHandler handler, PlayerInventory inventory, Text title) {
 		super(handler, inventory, title);
 	}
 

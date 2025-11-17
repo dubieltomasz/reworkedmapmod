@@ -2,7 +2,7 @@
   "required": true,
   "package": "io.tobert.reworkedmapmod.mixin",
   "client": [
-    "ExampleMixin"
+    "InventoryScreenGUIMixin"
   ],
   "injectors": {
     "defaultRequire": 1
