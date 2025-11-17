@@ -1,14 +1,19 @@
 {
-	"required": true,
-	"package": "io.tobert.reworkedmapmod.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "io.tobert.reworkedmapmod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "InventoryScreenInitializationMixin",
+    "PlayerEntityMixin",
+    "ServerPlayerEntityMixin"
+  ],
+  "client": [
+    "InventoryScreenGUIMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }

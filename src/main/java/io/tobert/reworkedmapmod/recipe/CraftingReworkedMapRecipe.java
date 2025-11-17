@@ -18,8 +18,27 @@ public class CraftingReworkedMapRecipe extends SpecialCraftingRecipe {
 
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        if(input.getWidth()==2 && input.getHeight() == 1 && input.getStackCount()==2){
-            return input.getStackInSlot(0,0).isOf(Items.RED_DYE) && input.getStackInSlot(1,0).isOf(ModItems.REWORKED_MAP);
+        if(input.getStackCount() == 2){
+            boolean bl1 = false;
+            boolean bl2 = false;
+
+            for(ItemStack itemStack : input.getStacks()) {
+                if(itemStack.isOf(ModItems.REWORKED_MAP)) {
+                    if(bl1) {
+                        return false;
+                    }
+
+                    bl1 = true;
+                } else if(itemStack.isOf(Items.RED_DYE)) {
+                    if(bl2) {
+                        return false;
+                    }
+
+                    bl2 = true;
+                }
+            }
+
+            return bl1 && bl2;
         }
         return false;
     }

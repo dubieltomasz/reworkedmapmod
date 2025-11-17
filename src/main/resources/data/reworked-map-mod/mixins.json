@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "io.tobert.reworkedmapmod.mixin",
+  "client": [
+    "InventoryScreenGUIMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
