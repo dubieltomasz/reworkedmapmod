@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "InventoryScreenInitializationMixin",
-    "PlayerEntityMixin",
-    "ServerPlayerEntityMixin"
+    "PlayerEntityMixin"
   ],
   "client": [
     "InventoryScreenGUIMixin"
