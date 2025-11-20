@@ -1,7 +1,7 @@
 package io.tobert.reworkedmapmod.mixin;
 
 import io.tobert.reworkedmapmod.customInventory.CustomInventoryHandler;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.StackWithSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.storage.ReadView;
@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin implements CustomInventoryHandler {
+@Mixin(LivingEntity.class)
+public abstract class LivingEntityMixin implements CustomInventoryHandler {
     @Unique
     DefaultedList<ItemStack> customInventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 

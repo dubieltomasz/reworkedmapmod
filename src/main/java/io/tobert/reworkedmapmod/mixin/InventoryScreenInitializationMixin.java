@@ -1,7 +1,10 @@
 package io.tobert.reworkedmapmod.mixin;
 
+import io.tobert.reworkedmapmod.customInventory.CustomArmorSlot;
 import io.tobert.reworkedmapmod.customInventory.CustomInventory;
 import io.tobert.reworkedmapmod.customInventory.CustomInventoryHandler;
+import net.fabricmc.fabric.api.item.v1.EquipmentSlotProvider;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.AbstractCraftingScreenHandler;
@@ -12,7 +15,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 
 @Mixin(PlayerScreenHandler.class)
 public abstract class InventoryScreenInitializationMixin extends AbstractCraftingScreenHandler {
@@ -28,8 +30,9 @@ public abstract class InventoryScreenInitializationMixin extends AbstractCraftin
         CustomInventory extraInventory = new CustomInventory();
         extraInventory.owner = (CustomInventoryHandler) owner;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             addSlot(new Slot(extraInventory, i, offsetX, offsetY + 18 * i));
         }
+        addSlot(new CustomArmorSlot(extraInventory, owner, EquipmentSlot.HEAD, 2, offsetX, offsetY + 18 * 2, null));
     }
 }
