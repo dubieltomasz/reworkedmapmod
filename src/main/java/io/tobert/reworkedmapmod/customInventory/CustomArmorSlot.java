@@ -1,6 +1,7 @@
 package io.tobert.reworkedmapmod.customInventory;
 
 import io.tobert.reworkedmapmod.ReworkedMapMod;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
@@ -17,27 +18,28 @@ import java.util.Locale;
 
 public class CustomArmorSlot extends Slot {
     private final LivingEntity entity;
-    private final EquipmentSlot equipmentSlot;
+    private final EquipmentSlot equipmentSlot = EquipmentSlot.CHEST;
+    private final CustomEquipmentSlot customEquipmentSlot;
     @Nullable
     private final Identifier backgroundSprite;
 
-    public CustomArmorSlot(Inventory inventory, LivingEntity entity, EquipmentSlot equipmentSlot, int index, int x, int y, @Nullable Identifier backgroundSprite) {
+    public CustomArmorSlot(Inventory inventory, LivingEntity entity, CustomEquipmentSlot customEquipmentSlot, int index, int x, int y, @Nullable Identifier backgroundSprite) {
         super(inventory, index, x, y);
         this.entity = entity;
-        this.equipmentSlot = equipmentSlot;
+        this.customEquipmentSlot = customEquipmentSlot;
         this.backgroundSprite = backgroundSprite;
     }
 
     @Override
     public void setStack(ItemStack stack, ItemStack previousStack) {
-        this.entity.onEquipStack(this.equipmentSlot, previousStack, stack);
+        //this.entity.onEquipStack(this.equipmentSlot, previousStack, stack); //makes sound
 
         if(previousStack != ItemStack.EMPTY) {
             previousStack.applyAttributeModifiers(this.equipmentSlot, (attribute, modifier) -> {
                 if(this.entity.getAttributeInstance(attribute) != null) {
                     this.entity.getAttributeInstance(attribute).removeModifier(
                             new EntityAttributeModifier(Identifier.of(ReworkedMapMod.MOD_ID.toLowerCase(Locale.ROOT)
-                                    + this.equipmentSlot.getName().toLowerCase(Locale.ENGLISH)),
+                                    + this.customEquipmentSlot.getName().toLowerCase(Locale.ENGLISH)),
                                     modifier.value(),
                                     modifier.operation()
                             )
@@ -51,7 +53,7 @@ public class CustomArmorSlot extends Slot {
                 if(this.entity.getAttributeInstance(attribute) != null) {
                     this.entity.getAttributeInstance(attribute).addPersistentModifier(
                             new EntityAttributeModifier(Identifier.of(ReworkedMapMod.MOD_ID.toLowerCase(Locale.ENGLISH)
-                                    + this.equipmentSlot.getName().toLowerCase(Locale.ENGLISH)),
+                                    + this.customEquipmentSlot.getName().toLowerCase(Locale.ENGLISH)),
                                     modifier.value(),
                                     modifier.operation()
                             )
@@ -70,12 +72,17 @@ public class CustomArmorSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return this.entity.canEquip(stack, this.equipmentSlot);
+        if(stack.getComponents().get(DataComponentTypes.CUSTOM_DATA) != null && !stack.getComponents().get(DataComponentTypes.CUSTOM_DATA).isEmpty()) {
+            return stack.getComponents().get(DataComponentTypes.CUSTOM_DATA).copyNbt().getInt("customSlot").get() == this.customEquipmentSlot.getIndex();
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean isEnabled() {
-        return this.entity.canUseSlot(this.equipmentSlot);
+        //?????
+        return true;
     }
 
     @Override

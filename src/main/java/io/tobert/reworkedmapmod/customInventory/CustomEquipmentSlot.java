@@ -13,9 +13,9 @@ import java.util.function.IntFunction;
 import java.util.function.ToIntFunction;
 
 public enum CustomEquipmentSlot implements StringIdentifiable {
-    FACE(EquipmentSlot.Type.HUMANOID_ARMOR, 0, 1, 0, "face"),
-    BACK(EquipmentSlot.Type.HUMANOID_ARMOR, 0, 1, 5, "back"),
-    HANDS(EquipmentSlot.Type.HUMANOID_ARMOR, 0, 1, 1, "hands");
+    FACE(EquipmentSlot.Type.HUMANOID_ARMOR, 4, 1, 0, "face"),
+    BACK(EquipmentSlot.Type.HUMANOID_ARMOR, 5, 1, 1, "back"),
+    HANDS(EquipmentSlot.Type.HUMANOID_ARMOR, 6, 1, 2, "hands");
 
     public static final int NO_MAX_COUNT = 0;
     public static final List<CustomEquipmentSlot> VALUES = List.of(values());
